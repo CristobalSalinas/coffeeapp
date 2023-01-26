@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:coffeapp/utils/coffe_tile.dart'; // CoffeTile()
+import 'package:coffeapp/utils/coffee_type.dart'; // CoffeeType()
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,6 +13,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final List coffeeType = [
+    ['Capuccino', true],
+    ['Latte', false],
+    ['Mocca', false],
+    ['Black', false],
+    ['Tea', false],
+  ];
+
+  void coffeeTypeSelected() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +62,27 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(
             height: 25,
+          ),
+          Container(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                CoffeeType(
+                  coffeeType: 'Mocca',
+                  isSelected: true,
+                  onTap: () {},
+                ),
+                CoffeeType(
+                    coffeeType: 'Capuccino',
+                    isSelected: false,
+                    onTap: coffeeTypeSelected),
+                CoffeeType(
+                    coffeeType: 'Black',
+                    isSelected: false,
+                    onTap: coffeeTypeSelected),
+              ],
+            ),
           ),
           Expanded(
               child: ListView(
