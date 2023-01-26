@@ -19,9 +19,14 @@ class _HomeState extends State<Home> {
     ['Mocca', false],
     ['Black', false],
     ['Tea', false],
+    ['Water', false],
   ];
 
-  void coffeeTypeSelected() {}
+  void coffeeTypeSelected(int index) {
+    setState(() {
+      coffeeType[index][1] = !coffeeType[index][1];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,26 +69,18 @@ class _HomeState extends State<Home> {
             height: 25,
           ),
           Container(
-            height: 50,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                CoffeeType(
-                  coffeeType: 'Mocca',
-                  isSelected: true,
-                  onTap: () {},
-                ),
-                CoffeeType(
-                    coffeeType: 'Capuccino',
-                    isSelected: false,
-                    onTap: coffeeTypeSelected),
-                CoffeeType(
-                    coffeeType: 'Black',
-                    isSelected: false,
-                    onTap: coffeeTypeSelected),
-              ],
-            ),
-          ),
+              height: 50,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: coffeeType.length,
+                  itemBuilder: (context, index) {
+                    return CoffeeType(
+                        coffeeType: coffeeType[index][0],
+                        isSelected: coffeeType[index][1],
+                        onTap: () {
+                          coffeeTypeSelected(index);
+                        });
+                  })),
           Expanded(
               child: ListView(
             scrollDirection: Axis.horizontal,
