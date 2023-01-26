@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
           Expanded(
               child: ListView(
             scrollDirection: Axis.horizontal,
-            children: [CoffeTile(), CoffeTile(), CoffeTile()],
+            children: [CoffeTile()],
           ))
         ],
       ),
