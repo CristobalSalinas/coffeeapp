@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coffeapp/pages/home.dart';
+import 'package:coffeapp/pages/home.dart'; // Home()
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
-      theme: ThemeData(brightness: Brightness.dark),
+      theme:
+          ThemeData(brightness: Brightness.dark, primarySwatch: Colors.orange),
     );
   }
 }
